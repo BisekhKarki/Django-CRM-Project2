@@ -16,6 +16,11 @@
       href="{% static 'css/styles.css' %}"
     />
 
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
     <title>Project X</title>
   </head>
   <body>
@@ -24,6 +29,20 @@
     <div class="container">
       <br />
       <!-- Notification messages -->
+      {% for message in messages %}
+      <br />
+      {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+      <p
+        class="alert alert-success float-center text-center message-text"
+        id="message-timer"
+      >
+        <i class="fa fa-check" aria-hidden="true"></i>
+        &nbsp; {{message}}
+      </p>
+      {% endif %}
+      <br />
+      {% endfor %}
+      <br />
       {% block content%}
       <br />
       {%endblock%}
